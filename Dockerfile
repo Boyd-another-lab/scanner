@@ -12,11 +12,12 @@ RUN apt-get update && apt-get upgrade -yq && \
     siege \
     gobuster \
     speedtest-cli \
+    man-db \
     mariadb-client postgresql-client redis-tools
     
- RUN apt install man-db \ 
-     apt install exploitdb \
-     apt install kali-tools-top10 
+#  RUN apt-get install man-db \ 
+#      apt-get install exploitdb \
+#      apt-get install kali-tools-top10 
 
 # Metasploit
 # RUN curl -s https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
