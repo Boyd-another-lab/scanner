@@ -3,12 +3,9 @@ FROM kalilinux/kali-rolling:latest
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get upgrade -yq && \
     apt-get install -y \
-    apt install kali-tools-top10 \
     nano \
-    man-db \
-    exploitdb \
     gnupg2 \
-    iputils-ping traceroute dnsutils telnet whois curl netcat net-tools iproute2 \
+    iputils-ping traceroute dnsutils telnet whois curl net-tools iproute2 \
     nmap \
     dnsrecon \
     theharvester \
@@ -16,6 +13,10 @@ RUN apt-get update && apt-get upgrade -yq && \
     gobuster \
     speedtest-cli \
     mariadb-client postgresql-client redis-tools
+    
+ RUN apt install man-db \ 
+     apt install exploitdb \
+     apt install kali-tools-top10 
 
 # Metasploit
 # RUN curl -s https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
