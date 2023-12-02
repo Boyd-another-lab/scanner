@@ -14,4 +14,7 @@ Run it at terminal:
 ``./kali "nmap -sV --script vulners localhost" ``
 
 
-nmap -sV --script vulners xxx.xxx.xxx.xxx seems to be giving different results than local host running same command, looking into it, probably networking issue with docker bridged/ip
+
+manual: docker run --rm -it --network "host" kali-docker "bin/sh" 
+#may need to use bridge networking depending on OS and docker env (remove --network "host")
+
