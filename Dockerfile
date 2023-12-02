@@ -26,6 +26,6 @@ RUN apt-get update && apt-get upgrade -yq && \
 
 # Custom scripts
 COPY scripts/myip /usr/local/bin/myip
-
+RUN echo "/bin/bash" >> /startkali.sh
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
