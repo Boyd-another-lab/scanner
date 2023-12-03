@@ -15,6 +15,7 @@ RUN apt-get update && apt-get upgrade -yq && \
     man-db \
     exploitdb \
     git \
+    emacs \
     mariadb-client postgresql-client redis-tools
     
 RUN  apt-get install -y kali-tools-top10 
@@ -29,9 +30,9 @@ RUN  apt-get install -y kali-tools-top10
 COPY scripts/myip /usr/local/bin/myip
 
 #RUN echo "/bin/bash" >> /startkali.sh
-RUN cd /usr/share/nmap/scripts/ 
-RUN git clone https://github.com/vulnersCom/nmap-vulners.git
-RUN git clone https://github.com/scipag/vulscan.git
+RUN cd /usr/share/nmap/scripts/ && git clone https://github.com/vulnersCom/nmap-vulners.git
+RUN cd /usr/share/nmap/scripts/ && git clone https://github.com/scipag/vulscan.git
+RUN chmod +x /usr/share/nmap/scripts/vulscan/utilities/updater/updateFiles.sh
 RUN /usr/share/nmap/scripts/vulscan/utilities/updater/./updateFiles.sh
 
 COPY entrypoint.sh /entrypoint.sh
