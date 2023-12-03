@@ -14,9 +14,10 @@ RUN apt-get update && apt-get upgrade -yq && \
     speedtest-cli \
     man-db \
     exploitdb \
+    git \
     mariadb-client postgresql-client redis-tools
     
-#  apt-get install kali-tools-top10 
+RUN  apt-get install -y kali-tools-top10 
 
 # Metasploit
 # RUN curl -s https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall && \
@@ -26,6 +27,12 @@ RUN apt-get update && apt-get upgrade -yq && \
 
 # Custom scripts
 COPY scripts/myip /usr/local/bin/myip
-RUN echo "/bin/bash" >> /startkali.sh
+
+#RUN echo "/bin/bash" >> /startkali.sh
+RUN cd /usr/share/nmap/scripts/ 
+RUN git clone https://github.com/vulnersCom/nmap-vulners.git
+RUN git clone https://github.com/scipag/vulscan.git
+RUN /usr/share/nmap/scripts/vulscan/utilities/updater/./updateFiles.sh
+
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
