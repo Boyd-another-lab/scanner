@@ -34,6 +34,7 @@ RUN cd /usr/share/nmap/scripts/ && git clone https://github.com/vulnersCom/nmap-
 RUN cd /usr/share/nmap/scripts/ && git clone https://github.com/scipag/vulscan.git
 RUN chmod +x /usr/share/nmap/scripts/vulscan/utilities/updater/updateFiles.sh
 RUN /usr/share/nmap/scripts/vulscan/utilities/updater/./updateFiles.sh
+RUN nmap --script-updatedb
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
