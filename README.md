@@ -27,10 +27,13 @@ a more compact scan that does some slight vuln testing:
 ```
 nmap --script nmap-vulners/ -sV <target> -p 21-80
 nmap -sS -sV --script=vulscan/vulscan.nse <target>  
-nmap -scritp vuln <target>
+nmap -script vuln <target>
 ```
 
 Example of a local scan:
 ```
 nmap -script vuln 192.168.1.0-255   
 ```
+
+putting it out to a file
+nmap --script vuln 10.0.0.0-255 -oX nmap_output.xml
